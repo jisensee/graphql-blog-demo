@@ -1,5 +1,14 @@
 {
   "name": "client",
+  "graphql": {
+    "apolloMode": true,
+    "extendMutation": "ApolloClient.GraphQL_PPX.ExtendMutation",
+    "extendQuery": "ApolloClient.GraphQL_PPX.ExtendQuery",
+    "extendSubscription": "ApolloClient.GraphQL_PPX.ExtendSubscription",
+    "templateTagReturnType": "ApolloClient.GraphQL_PPX.templateTagReturnType",
+    "templateTagImport": "gql",
+    "templateTagLocation": "@apollo/client"
+  },
   "reason": {
     "react-jsx": 3
   },
@@ -16,20 +25,11 @@
   ],
   "suffix": ".bs.js",
   "namespace": true,
+  "ppx-flags": ["@reasonml-community/graphql-ppx/ppx"],
   "bs-dependencies": [
     "reason-react",
     "@reasonml-community/graphql-ppx",
     "reason-apollo-client"
   ],
-  "ppx-flags": ["@reasonml-community/graphql-ppx/ppx"],
-  "refmt": 3,
-  "graphql": {
-    "apolloMode": true,
-    "extendMutation": "ApolloClient.GraphQL_PPX.ExtendMutation",
-    "extendQuery": "ApolloClient.GraphQL_PPX.ExtendQuery",
-    "extendSubscription": "ApolloClient.GraphQL_PPX.ExtendSubscription",
-    "templateTagReturnType": "ApolloClient.GraphQL_PPX.templateTagReturnType",
-    "templateTagImport": "gql",
-    "templateTagLocation": "@apollo/client"
-  }
+  "refmt": 3
 }

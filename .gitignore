@@ -3,3 +3,5 @@ dist
 lib
 .merlin
 .bsb.lock
+.parcel-cache
+.graphql_ppx_cache
