@@ -1,0 +1,39 @@
+type Query {
+  users: [User!]!
+  user(id: ID!): User
+
+  posts: [Post!]!
+  postsOfUser(id: ID!): [Post!]!
+  post(id: ID!): Post
+}
+
+type Mutation {
+  addPost(authorId: ID!, title: String!, content: String!): Post!
+  addComment(authorId: ID!, postId: ID!, content: String!): Comment!
+}
+
+interface Entity {
+  id: ID!
+}
+
+type User implements Entity {
+  id: ID!
+  name: String!
+  username: String!
+  posts: [Post!]!
+  comments: [Comment!]!
+}
+
+type Post implements Entity {
+  id: ID!
+  title: String!
+  content: String!
+  author: User
+  comments: [Comment!]!
+}
+
+type Comment implements Entity {
+  id: ID!
+  content: String!
+  author: User
+}
