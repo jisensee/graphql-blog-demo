@@ -21,6 +21,7 @@ type User implements Entity {
   id: ID!
   isAuthor: Boolean!
   name: String!
+  bio: String
   username: String!
   posts: [Post!]!
   comments: [Comment!]!

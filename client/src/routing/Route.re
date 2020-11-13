@@ -1,8 +1,11 @@
+type id = string;
+
 type t =
   | Posts
-  | Post(string)
+  | Post(id)
   | AddPost
   | Authors
+  | User(id)
   | NotFound;
 
 let toString =
@@ -11,6 +14,7 @@ let toString =
   | Post(postId) => "/post/" ++ postId
   | AddPost => "/post/add"
   | Authors => "/authors"
+  | User(userId) => "/user/" ++ userId
   | NotFound => "/404";
 
 let fromPath =
@@ -19,6 +23,7 @@ let fromPath =
   | ["/"] => Posts
   | ["post", "add"] => AddPost
   | ["post", postId] => Post(postId)
+  | ["user", userId] => User(userId)
   | ["authors"] => Authors
   | _ => NotFound;
 

@@ -1,4 +1,5 @@
 open UserFragments;
+open PostFragments;
 
 [%graphql
   {|
@@ -10,6 +11,14 @@ query AuthorsQuery {
 query UsersQuery {
   users {
     ...UserContextData
+  }
+}
+query UserQuery($userId: ID!) {
+  user(id: $userId) {
+    posts {
+      ...PostPreviewData
+    }
+    ...UserDisplayData
   }
 }
 |};

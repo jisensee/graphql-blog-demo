@@ -25,13 +25,7 @@ module Form = {
 let make = () => {
   let (mutate, mutationResult) = Mutations.AddPostMutation.use();
   let addPost = (authorId, title, content) =>
-    mutate(
-      ~refetchQueries=[|
-        PostQueries.PostPreviewsQuery.refetchQueryDescription(),
-      |],
-      {authorId, title, content},
-    )
-    ->ignore;
+    mutate({authorId, title, content})->ignore;
   let (loading, setLoading) = React.useState(() => false);
   let user = UserContext.use();
 

@@ -16,7 +16,11 @@ let make = () => {
   <>
     <Layout.PageTitle> "Authors"->React.string </Layout.PageTitle>
     {authors
-     ->Belt.Array.map(author => <AuthorPreview key={author.id} author />)
+     ->Belt.Array.map(author =>
+         <Link to_={Route.User(author.id)}>
+           <AuthorPreview key={author.id} author />
+         </Link>
+       )
      ->React.array}
   </>;
 };

@@ -26,6 +26,13 @@ fragment AuthorPreviewData on User {
   id
   name
 }
+
+fragment UserDisplayData on User {
+  name
+  username
+  isAuthor
+  bio
+}
 |};
   {inline: true}
 ];

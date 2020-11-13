@@ -4,6 +4,7 @@ let make = (~userSelect) => {
   let toggleBurger = _ => setExpanded(e => !e);
   let hideBurger = () => setExpanded(_ => false);
   let navbarMenuClass = "navbar-menu" ++ (expanded ? " is-active" : "");
+  let user = UserContext.use();
   let burgerClass =
     "navbar navbar-burger has-background-light"
     ++ (expanded ? " is-active" : "");
@@ -29,6 +30,11 @@ let make = (~userSelect) => {
           {linkItem(Route.AddPost, "edit", "New post"->React.string)}
         </RequireAuthor>
         {linkItem(Route.Authors, "users", "Authors"->React.string)}
+        {switch (user) {
+         | None => React.null
+         | Some({id}) =>
+           linkItem(Route.User(id), "user", "My profile"->React.string)
+         }}
       </div>
     </div>
   </nav>;
