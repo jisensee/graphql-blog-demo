@@ -26,7 +26,7 @@ let make = (~userSelect) => {
     <div className=navbarMenuClass>
       <div className="navbar-start">
         <RequireAuthor>
-          {linkItem(Route.Posts, "edit", "New post"->React.string)}
+          {linkItem(Route.AddPost, "edit", "New post"->React.string)}
         </RequireAuthor>
         {linkItem(Route.Posts, "users", "Authors"->React.string)}
       </div>

@@ -1,9 +1,9 @@
-module Title = {
+module PageTitle = {
   [@react.component]
-  let make = (~children) => <p className="title is-1"> children </p>;
+  let make = (~children) => <p className="title is-2"> children </p>;
 };
 
-module SubTitle = {
+module PageSubTitle = {
   [@react.component]
   let make = (~children) => <p className="subtitle is-4"> children </p>;
 };

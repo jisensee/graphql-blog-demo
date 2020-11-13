@@ -4,10 +4,11 @@ open Belt;
 
 module PostDisplay = {
   [@react.component]
-  let make = (~post: PostDisplayData.t) =>
+  let make = (~post: PostDisplayData.t) => {
+    let contentStyle = ReactDOM.Style.make(~whiteSpace="pre-wrap", ());
     <>
-      <Layout.Title> post.title->React.string </Layout.Title>
-      <Layout.SubTitle>
+      <Layout.PageTitle> post.title->React.string </Layout.PageTitle>
+      <Layout.PageSubTitle>
         {(
            "By "
            ++ post.author
@@ -15,9 +16,12 @@ module PostDisplay = {
               ->Option.getWithDefault("[deleted]")
          )
          ->React.string}
-      </Layout.SubTitle>
-      <div className="content"> post.content->React.string </div>
+      </Layout.PageSubTitle>
+      <div className="content" style=contentStyle>
+        post.content->React.string
+      </div>
     </>;
+  };
 };
 
 [@react.component]

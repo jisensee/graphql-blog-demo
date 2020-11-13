@@ -3,10 +3,10 @@ type userContextData = UserFragments.UserContextData.t;
 type contextValue = option(userContextData);
 let userContext = React.createContext(None: contextValue);
 
-let useUser = () => React.useContext(userContext);
+let use = () => React.useContext(userContext);
 
 let useIsAuthor = () =>
-  switch (useUser()) {
+  switch (use()) {
   | Some(user) => user.isAuthor
   | None => false
   };
