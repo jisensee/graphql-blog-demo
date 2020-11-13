@@ -1,39 +1,28 @@
 open Belt;
-
-[%graphql
-  {|
-        query AllPostsQuery {
-          posts {
-            id
-            title
-            author {
-              name
-            }
-          }
-        }
-|}
-];
+open PostQueries;
+open PostFragments;
 
 module PostList = {
   [@react.component]
-  let make = (~posts: array(AllPostsQuery.AllPostsQuery_inner.t_posts)) =>
+  let make = (~posts: array(PostPreviewData.t)) =>
     posts
-    ->Array.map(p =>
-        <PostPreview
-          key={p.id}
-          title={p.title}
-          author={p.author->Option.mapWithDefault("", a => a.name)}
-        />
+    ->Array.map(post =>
+        <Link key={post.id} to_={Route.Post(post.id)}>
+          <PostPreview post />
+        </Link>
       )
     ->React.array;
 };
 
 [@react.component]
-let make = () =>
-  switch (AllPostsQuery.use()) {
-  | {loading: true} => "Loading..."->React.string
-  | {data: Some({posts})} => <PostList posts />
-  // | {data: Some({posts})} => <p> "Posts"->React.string </p>
-  | {error: Some(_error)} => "Error :("->React.string
-  | _ => "lul"->React.string
-  };
+let make = () => {
+  let content =
+    switch (PostPreviewsQuery.use()) {
+    | {loading: true} => "Loading..."->React.string
+    | {data: Some({posts})} => <PostList posts />
+    | {error: Some(_)}
+    | _ => "Could not load posts :("->React.string
+    };
+
+  <> <h1 className="title is-1"> "Posts"->React.string </h1> content </>;
+};

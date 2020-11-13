@@ -1,5 +1,6 @@
 type Query {
   users: [User!]!
+  authors: [User!]!
   user(id: ID!): User
 
   posts: [Post!]!
@@ -18,6 +19,7 @@ interface Entity {
 
 type User implements Entity {
   id: ID!
+  isAuthor: Boolean!
   name: String!
   username: String!
   posts: [Post!]!
@@ -27,6 +29,7 @@ type User implements Entity {
 type Post implements Entity {
   id: ID!
   title: String!
+  abstract: String!
   content: String!
   author: User
   comments: [Comment!]!

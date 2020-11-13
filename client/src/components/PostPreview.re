@@ -1,5 +1,17 @@
 [@react.component]
-let make = (~title, ~author) => {
-  let text = title ++ " - " ++ author;
-  <p> text->React.string </p>;
+let make = (~post: PostFragments.PostPreviewData.t) => {
+  let authorName =
+    "by "
+    ++ (
+      switch (post.author) {
+      | Some(author) => author.name
+      | None => "[deleted]"
+      }
+    );
+
+  <div className="box content">
+    <p className="title is-3"> post.title->React.string </p>
+    <p className="subtitle is-5"> authorName->React.string </p>
+    <p> post.abstract->React.string </p>
+  </div>;
 };

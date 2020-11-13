@@ -1,7 +1,9 @@
 let getPage =
   fun
-  | [""] => <PostsPage />
-  | _ => <p> "Nothing here :("->React.string </p>;
+  | Route.Posts => <PostsPage />
+  | Route.Post(postId) => <PostPage postId />
+  | Route.Authors => <AuthorsPage />
+  | Route.NotFound => <p> "Nothing here :("->React.string </p>;
 
 module ApolloProvider = {
   [@react.component]
@@ -11,8 +13,20 @@ module ApolloProvider = {
     </ApolloClient.React.ApolloProvider>;
 };
 
+type user = UserFragments.UserContextData.t;
+
 [@react.component]
 let make = () => {
   let url = ReasonReactRouter.useUrl();
-  <ApolloProvider> url.path->getPage </ApolloProvider>;
+  let pageComp = url.path->Route.fromPath->getPage;
+  let (activeUser: option(user), setActiveUser) = React.useState(() => None);
+
+  <ApolloProvider>
+    <UserContext.Provider value=activeUser>
+      <PageFrame
+        activeUser setActiveUser={user => setActiveUser(_ => Some(user))}>
+        pageComp
+      </PageFrame>
+    </UserContext.Provider>
+  </ApolloProvider>;
 };

@@ -5,3 +5,4 @@ lib
 .bsb.lock
 .parcel-cache
 .graphql_ppx_cache
+*.bs.js

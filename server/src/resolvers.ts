@@ -7,16 +7,18 @@ import {
 } from './entity/comment'
 import {
   addPost,
+  getPostAbstract,
   getPostById,
   getPosts,
   getPostsByAuthor,
   Post,
 } from './entity/post'
-import { getUserById, getUsers, User } from './entity/user'
+import { getAuthors, getUserById, getUsers, User } from './entity/user'
 
 const resolvers: IResolvers = {
   Query: {
     users: () => getUsers(),
+    authors: () => getAuthors(),
     user: (_, args) => getUserById(args.id),
 
     posts: () => getPosts(),
@@ -32,6 +34,7 @@ const resolvers: IResolvers = {
     comments: (parent: User) => getCommentsByUser(parent.id),
   },
   Post: {
+    abstract: (parent: Post) => getPostAbstract(parent),
     author: (parent: Post) => getUserById(parent.authorId),
     comments: (parent: Post) => getCommentsByPost(parent.id),
   },

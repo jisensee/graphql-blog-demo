@@ -26,4 +26,20 @@ const addPost = (authorId: id, title: string, content: string): Post => {
   return newPost
 }
 
-export { Post, getPosts, getPostsByAuthor, getPostById, addPost }
+const getPostAbstract = (post: Post) => {
+  const index = post.content.indexOf('\n')
+  if (index == -1) {
+    return post.content
+  } else {
+    return post.content.slice(0, index)
+  }
+}
+
+export {
+  Post,
+  getPosts,
+  getPostsByAuthor,
+  getPostById,
+  addPost,
+  getPostAbstract,
+}
