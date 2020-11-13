@@ -1,4 +1,5 @@
 open UserFragments;
+open CommentFragments;
 
 [%graphql
   {|
@@ -17,8 +18,10 @@ open UserFragments;
     author {
       ...PostDisplayAuthorData
     }
+    comments {
+      ...CommentDisplayData
+    }
   }
-
 |};
   {inline: true}
 ];

@@ -8,6 +8,5 @@ fragment CommentDisplayData on Comment {
     ...CommentAuthorData
   }
 }
-|};
-  {inline: true}
+|}
 ];

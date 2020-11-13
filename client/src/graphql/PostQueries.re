@@ -1,4 +1,5 @@
 open PostFragments;
+open CommentFragments;
 
 [%graphql
   {|

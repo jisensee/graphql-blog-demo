@@ -28,7 +28,7 @@ let make = (~userSelect) => {
         <RequireAuthor>
           {linkItem(Route.AddPost, "edit", "New post"->React.string)}
         </RequireAuthor>
-        {linkItem(Route.Posts, "users", "Authors"->React.string)}
+        {linkItem(Route.Authors, "users", "Authors"->React.string)}
       </div>
     </div>
   </nav>;
