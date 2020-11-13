@@ -23,7 +23,7 @@ module Form = {
 
 [@react.component]
 let make = () => {
-  let (mutate, mutationResult) = PostMutations.AddPostMutation.use();
+  let (mutate, mutationResult) = Mutations.AddPostMutation.use();
   let addPost = (authorId, title, content) =>
     mutate(
       ~refetchQueries=[|
