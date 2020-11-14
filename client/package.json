@@ -2,6 +2,9 @@
   "name": "client",
   "version": "0.1.0",
   "scripts": {
+    "start": "npm run update-schema && run-p re:watch parcel:serve",
+    "clean": "run-p re:clean parcel:clean",
+    "build": "run-s clean update-schema re:build parcel:build",
     "re:build": "bsb -make-world",
     "re:watch": "bsb -make-world -w -ws _ ",
     "re:clean": "bsb -clean-world",
@@ -16,6 +19,7 @@
   "devDependencies": {
     "bs-platform": "^8.3.2",
     "get-graphql-schema": "^2.1.2",
+    "npm-run-all": "^4.1.5",
     "parcel": "^2.0.0-beta.1",
     "rimraf": "^3.0.2"
   },
