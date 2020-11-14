@@ -12,10 +12,11 @@ let make = (~post: PostFragments.PostPreviewData.t) => {
     <Link to_={Route.Post(post.id)}>
       <p className="title is-3"> post.title->React.string </p>
     </Link>
-    <p className="subtitle is-5">
+    <span className="subtitle is-5">
       <span> "By "->React.string </span>
       authorName
-    </p>
+    </span>
+    <Timestamp.Display className="is-italic ml-3" of_={post.createdAt} />
     <p className="has-text-weight-semibold"> post.abstract->React.string </p>
   </div>;
 };

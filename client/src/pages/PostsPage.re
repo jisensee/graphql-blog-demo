@@ -10,5 +10,5 @@ let make = () => {
     | _ => "Could not load posts :("->React.string
     };
 
-  <> <Layout.PageTitle> "Posts"->React.string </Layout.PageTitle> content </>;
+  <> <div className="title is-1"> "Posts"->React.string </div> content </>;
 };

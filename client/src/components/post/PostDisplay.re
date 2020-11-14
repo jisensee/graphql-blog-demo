@@ -9,13 +9,14 @@ let make = (~post: PostFragments.PostDisplayData.t) => {
       }
     />;
   <>
-    <Layout.PageTitle> post.title->React.string </Layout.PageTitle>
-    <Layout.PageSubTitle>
+    <div className="title is-1"> post.title->React.string </div>
+    <span className="subtitle is-4">
       <span> "By "->React.string </span>
       authorName
-    </Layout.PageSubTitle>
-    <div className="content" style=contentStyle>
+    </span>
+    <Timestamp.Display className="is-italic ml-2" of_={post.createdAt} />
+    <p className="content mt-3" style=contentStyle>
       post.content->React.string
-    </div>
+    </p>
   </>;
 };

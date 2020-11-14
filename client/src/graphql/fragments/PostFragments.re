@@ -6,6 +6,7 @@ open UserFragments;
     id
     title
     abstract
+    createdAt
     author {
       ...PostPreviewAuthorData
     }
@@ -15,6 +16,7 @@ open UserFragments;
     id
     title
     content
+    createdAt
     author {
       ...PostDisplayAuthorData
     }

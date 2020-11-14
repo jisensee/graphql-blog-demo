@@ -35,10 +35,12 @@ const resolvers: IResolvers = {
   },
   Post: {
     abstract: (parent: Post) => getPostAbstract(parent),
+    createdAt: (parent: Post) => parent.createdAt.toISOString(),
     author: (parent: Post) => getUserById(parent.authorId),
     comments: (parent: Post) => getCommentsByPost(parent.id),
   },
   Comment: {
+    createdAt: (parent: Comment) => parent.createdAt.toISOString(),
     author: (parent: Comment) => getUserById(parent.authorId),
   },
 }

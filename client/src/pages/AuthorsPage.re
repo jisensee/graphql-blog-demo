@@ -16,7 +16,7 @@ let make = () => {
     };
 
   <>
-    <Layout.PageTitle> "Authors"->React.string </Layout.PageTitle>
+    <div className="title is-1"> "Authors"->React.string </div>
     {authors
      ->Belt.Array.map(author => <AuthorPreview key={author.id} author />)
      ->React.array}

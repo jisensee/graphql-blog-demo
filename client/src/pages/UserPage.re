@@ -8,16 +8,16 @@ let make = (~userId: string) => {
     switch (maybeUser) {
     | Some({userDisplayData: user, posts}) =>
       <>
-        <Layout.PageTitle>
+        <div className="title is-1">
           {(user.name ++ " (@" ++ user.username ++ ")")->React.string}
-        </Layout.PageTitle>
+        </div>
         {user.bio
          ->Belt.Option.mapWithDefault(React.null, bio =>
              <div className="box is-italic"> bio->React.string </div>
            )}
         {user.isAuthor && posts->Belt.Array.length > 0
            ? <>
-               <p className="title is-3"> "Posts"->React.string </p>
+               <div className="title is-3"> "Posts"->React.string </div>
                <PostPreviewList posts />
              </>
            : React.null}

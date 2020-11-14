@@ -4,6 +4,7 @@ interface Post extends Entity {
   title: string
   content: string
   authorId: id
+  createdAt: Date
 }
 
 const posts: Post[] = []
@@ -21,6 +22,7 @@ const addPost = (authorId: id, title: string, content: string): Post => {
     title,
     content,
     authorId,
+    createdAt: new Date(),
   }
   posts.push(newPost)
   return newPost

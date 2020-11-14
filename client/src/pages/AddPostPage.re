@@ -7,7 +7,7 @@ module Form = {
     let dataValid = data.title !== "" && data.content !== "";
 
     <>
-      <Layout.PageTitle> "Create new post"->React.string </Layout.PageTitle>
+      <div className="title is-1"> "Create new post"->React.string </div>
       <PostForm data onDataChange={d => setData(_ => d)}>
         <div className="field">
           <div className="control">

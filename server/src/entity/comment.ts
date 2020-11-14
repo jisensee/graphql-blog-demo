@@ -2,6 +2,7 @@ import { Entity, genId, id } from './entity'
 
 interface Comment extends Entity {
   content: string
+  createdAt: Date
   authorId: id
   postId: id
 }
@@ -18,6 +19,7 @@ const addComment = (authorId: id, postId: id, content: string) => {
   const newComment: Comment = {
     id: genId(),
     content,
+    createdAt: new Date(),
     authorId,
     postId,
   }

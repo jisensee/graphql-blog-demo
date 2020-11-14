@@ -5,6 +5,7 @@ open UserFragments;
 fragment CommentDisplayData on Comment {
   id
   content
+  createdAt
   author {
     ...CommentAuthorData
   }

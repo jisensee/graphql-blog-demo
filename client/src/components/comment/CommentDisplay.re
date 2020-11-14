@@ -7,7 +7,8 @@ let make = (~comment: CommentFragments.CommentDisplayData.t) => {
     };
 
   <div className="box">
-    <p className="title is-5"> <UserRef userData /> </p>
+    <span className="title is-5"> <UserRef userData /> </span>
+    <Timestamp.Display className="is-italic ml-2" of_={comment.createdAt} />
     <p> comment.content->React.string </p>
   </div>;
 };

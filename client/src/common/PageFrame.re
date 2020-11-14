@@ -25,6 +25,6 @@ let make = (~children, ~activeUser, ~setActiveUser) => {
 
   <>
     <Navbar userSelect />
-    <Layout.PageContent> children </Layout.PageContent>
+    <div className="content ml-3 py-3"> children </div>
   </>;
 };
