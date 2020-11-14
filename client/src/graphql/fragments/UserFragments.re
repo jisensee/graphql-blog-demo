@@ -22,9 +22,10 @@ fragment UserContextData on User {
   isAuthor
 }
 
-fragment AuthorPreviewData on User {
+fragment UserPreviewData on User {
   id
   name
+  bio
 }
 
 fragment UserDisplayData on User {

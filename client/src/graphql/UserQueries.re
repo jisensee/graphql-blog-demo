@@ -5,7 +5,7 @@ open PostFragments;
   {|
 query AuthorsQuery {
   authors {
-    ...AuthorPreviewData
+    ...UserPreviewData
   }
 }
 query UsersQuery {
