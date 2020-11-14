@@ -3,24 +3,17 @@ module Form = {
   let make = (~userId, ~loading, ~addPost) => {
     let (data, setData) =
       React.useState(() => {PostForm.title: "", content: ""});
-    let onSave = event => {
-      event->ReactEvent.Mouse.preventDefault;
-      addPost(userId, data.title, data.content);
-    };
-    let buttonClass =
-      Cn.(fromList(["button", "is-success", "loading"->on(loading)]));
-    let buttonDisabled = data.title === "" || data.content === "";
+    let onSave = _ => addPost(userId, data.title, data.content);
+    let dataValid = data.title !== "" && data.content !== "";
 
     <>
       <Layout.PageTitle> "Create new post"->React.string </Layout.PageTitle>
       <PostForm data onDataChange={d => setData(_ => d)}>
         <div className="field">
           <div className="control">
-            <button
-              className=buttonClass onClick=onSave disabled=buttonDisabled>
-              <Icon icon="save" small=true />
-              <span> "Save"->React.string </span>
-            </button>
+            <Button onClick=onSave enabled=dataValid loading icon="save">
+              "Save"->React.string
+            </Button>
           </div>
         </div>
       </PostForm>
