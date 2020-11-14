@@ -14,31 +14,37 @@ const users: User[] = [
     name: 'Donald J. Trump',
     username: 'maga2020',
     bio:
-      'I WON THIS ELECTION! DEMOCATRS ARE STEALING IT, SO SAD! TERRIBLE THINGS HAVE HAPPENED AT ELECTION NIGHT, THE RADICAL LEFT IS GOING TO DESTROY AMERICA. LAW AND ORDER!!!',
+      'I WON THIS ELECTION! DEMOCRATS ARE STEALING IT, SO SAD! TERRIBLE THINGS HAVE HAPPENED AT ELECTION NIGHT, THE RADICAL LEFT IS GOING TO DESTROY AMERICA. LAW AND ORDER!!!',
   },
   {
     id: genId(),
     isAuthor: false,
-    name: 'Homer Simpson',
-    username: 'duffBeerFtw',
-    bio:
-      'Ich hab 3 Kinder und kein Geld, warum kann ich nicht keine Kinder und 3 Geld haben?',
+    name: 'Barack Obama',
+    username: 'BlackLifesMatter',
+    bio: 'The last 4 years really have felt like 40, fml',
   },
   {
     id: genId(),
     isAuthor: true,
     name: 'Josph R. Biden',
-    username: 'trumpSucksRofl',
+    username: 'WillYouShutUpMan',
     bio:
-      'I may think that my wife is my sister but at least I know who won this election :D',
+      'I may sometimes forget who my wife is but at least I know who won the 2020 election :D',
   },
   {
     id: genId(),
     isAuthor: false,
     name: 'Vladimir Putin',
-    username: 'vladi420',
+    username: 'UncleVladi',
     bio:
-      'I am very proud of you Donnie, keep up the good work. Just remember to get back to mother russia before the left takes over your country :P',
+      'I am very proud of you Donnie, keep up the good work. Just remember to get back to mother russia before the left takes over your country lmao',
+  },
+  {
+    id: genId(),
+    isAuthor: false,
+    name: 'Xavier Naidoo',
+    username: 'aluhut33',
+    bio: 'Dieses Land...ist keine Republik...Dieses Land...ist eine GmbH',
   },
 ]
 

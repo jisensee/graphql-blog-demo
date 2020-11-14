@@ -5,18 +5,22 @@ module Form = {
       React.useState(() => {PostForm.title: "", content: ""});
     let onSave = _ => addPost(userId, data.title, data.content);
     let buttonClass =
-      Cn.(fromList(["button", "is-sucess", "loading"->on(loading)]));
+      Cn.(fromList(["button", "is-success", "loading"->on(loading)]));
+    let buttonDisabled = data.title === "" || data.content === "";
 
     <>
       <Layout.PageTitle> "Create new post"->React.string </Layout.PageTitle>
-      <PostForm data onDataChange={d => setData(_ => d)} />
-      <div className="field">
-        <div className="control">
-          <button className=buttonClass onClick=onSave>
-            "Save"->React.string
-          </button>
+      <PostForm data onDataChange={d => setData(_ => d)}>
+        <div className="field">
+          <div className="control">
+            <button
+              className=buttonClass onClick=onSave disabled=buttonDisabled>
+              <Icon icon="save" small=true />
+              <span> "Save"->React.string </span>
+            </button>
+          </div>
         </div>
-      </div>
+      </PostForm>
     </>;
   };
 };

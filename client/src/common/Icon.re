@@ -1,7 +1,10 @@
 [@react.component]
-let make = (~icon, ~children=?) => {
+let make = (~icon, ~small=false, ~children=?) => {
   let iconElement =
-    <span className="icon is-medium">
+    <span
+      className=Cn.(
+        fromList(["icon", "is-small"->on(small), "is-medium"->on(!small)])
+      )>
       <i className={"fas fa-lg fa-" ++ icon} />
     </span>;
   switch (children) {

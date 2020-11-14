@@ -4,7 +4,7 @@ type data = {
 };
 
 [@react.component]
-let make = (~data, ~onDataChange) => {
+let make = (~children=?, ~data, ~onDataChange) => {
   let onTitleChange = event => {
     let value = event->ReactEvent.Form.currentTarget##value;
     onDataChange({...data, title: value});
@@ -13,23 +13,38 @@ let make = (~data, ~onDataChange) => {
     let value = event->ReactEvent.Form.currentTarget##value;
     onDataChange({...data, content: value});
   };
+  let getInputClass = (className, valid) =>
+    Cn.(
+      fromList([
+        className,
+        "is-success"->on(valid),
+        "is-danger"->on(!valid),
+      ])
+    );
+  let titleInputClass = getInputClass("input", data.title !== "");
+  let contentInputClass = getInputClass("textarea", data.content !== "");
 
   <form>
     <div className="field">
       <label className="label"> "Title"->React.string </label>
       <div className="control">
-        <input className="input" value={data.title} onChange=onTitleChange />
+        <input
+          className=titleInputClass
+          value={data.title}
+          onChange=onTitleChange
+        />
       </div>
     </div>
     <div className="field">
       <label className="label"> "Content"->React.string </label>
       <div className="control">
         <textarea
-          className="textarea"
+          className=contentInputClass
           value={data.content}
           onChange=onContentChange
         />
       </div>
     </div>
+    {children->Belt.Option.getWithDefault(React.null)}
   </form>;
 };
