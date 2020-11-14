@@ -2,8 +2,8 @@ module Query = UserQueries.UserQuery;
 
 [@react.component]
 let make = (~userId: string) => {
-  let vars = Query.makeVariables(~userId, ());
-  switch (Query.use(vars)) {
+  let result = Query.makeVariables(~userId, ())->Query.use;
+  switch (result) {
   | {data: Some({user: maybeUser})} =>
     switch (maybeUser) {
     | Some({userDisplayData: user, posts}) =>

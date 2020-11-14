@@ -1,5 +1,4 @@
 open UserFragments;
-open CommentFragments;
 
 [%graphql
   {|
@@ -13,13 +12,11 @@ open CommentFragments;
   }
 
   fragment PostDisplayData on Post {
+    id
     title
     content
     author {
       ...PostDisplayAuthorData
-    }
-    comments {
-      ...CommentDisplayData
     }
   }
 |};

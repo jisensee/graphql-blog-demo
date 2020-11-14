@@ -1,7 +1,7 @@
 module Form = {
   [@react.component]
   let make = (~userId, ~loading, ~addPost) => {
-    let (data, setData) =
+    let (data: PostForm.data, setData) =
       React.useState(() => {PostForm.title: "", content: ""});
     let onSave = _ => addPost(userId, data.title, data.content);
     let dataValid = data.title !== "" && data.content !== "";
@@ -37,7 +37,6 @@ let make = () => {
           Route.(Post(addPost.id)->navigate);
           false;
         | {loading: true} => true
-        | {called: false}
         | _ => false
         };
       setLoading(_ => loading);
