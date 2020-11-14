@@ -1,8 +1,10 @@
 module AuthorPreview = {
   [@react.component]
   let make = (~author: UserFragments.AuthorPreviewData.t) =>
-    <div className="box">
-      <p className="title is-3"> author.name->React.string </p>
+    <div className="box context">
+      <Link to_={Route.User(author.id)}>
+        <p className="title is-3"> author.name->React.string </p>
+      </Link>
     </div>;
 };
 [@react.component]
@@ -16,11 +18,7 @@ let make = () => {
   <>
     <Layout.PageTitle> "Authors"->React.string </Layout.PageTitle>
     {authors
-     ->Belt.Array.map(author =>
-         <Link to_={Route.User(author.id)}>
-           <AuthorPreview key={author.id} author />
-         </Link>
-       )
+     ->Belt.Array.map(author => <AuthorPreview key={author.id} author />)
      ->React.array}
   </>;
 };
