@@ -34,7 +34,7 @@ let make = () => {
       let loading =
         switch (mutationResult) {
         | {data: Some({addPost})} =>
-          Route.(Post(addPost.id)->navigate);
+          Route.(Post(addPost.id, None)->navigate);
           false;
         | {loading: true} => true
         | _ => false

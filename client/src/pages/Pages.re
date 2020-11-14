@@ -1,7 +1,8 @@
 let fromRoute =
   fun
   | Route.Posts => <PostsPage />
-  | Route.Post(postId) => <PostPage postId />
+  | Route.Post(postId, focusedCommentId) =>
+    <PostPage postId focusedCommentId />
   | Route.AddPost => <AddPostPage />
   | Route.Authors => <AuthorsPage />
   | Route.User(userId) => <UserPage userId />

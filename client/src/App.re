@@ -10,8 +10,7 @@ type user = UserFragments.UserContextData.t;
 
 [@react.component]
 let make = () => {
-  let url = ReasonReactRouter.useUrl();
-  let pageComp = url.path->Route.fromPath->Pages.fromRoute;
+  let pageComp = ReasonReactRouter.useUrl()->Route.fromUrl->Pages.fromRoute;
   let (activeUser: option(user), setActiveUser) = React.useState(() => None);
 
   <ApolloProvider>

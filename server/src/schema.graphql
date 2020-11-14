@@ -42,4 +42,5 @@ type Comment implements Entity {
   content: String!
   createdAt: String!
   author: User
+  post: Post
 }

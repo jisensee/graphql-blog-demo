@@ -6,7 +6,7 @@ let make = (~userId: string) => {
   switch (result) {
   | {data: Some({user: maybeUser})} =>
     switch (maybeUser) {
-    | Some({userDisplayData: user, posts}) =>
+    | Some({userDisplayData: user, posts, comments}) =>
       <>
         <div className="title is-1">
           {(user.name ++ " (@" ++ user.username ++ ")")->React.string}
@@ -21,6 +21,7 @@ let make = (~userId: string) => {
                <PostPreviewList posts />
              </>
            : React.null}
+        <CommentPreviewList comments />
       </>
     | None => <p> "That user does not exist :("->React.string </p>
     }

@@ -10,5 +10,16 @@ fragment CommentDisplayData on Comment {
     ...CommentAuthorData
   }
 }
-|}
+
+fragment CommentPreviewData on Comment {
+  id
+  content
+  createdAt
+  post {
+    id
+    title
+  }
+}
+|};
+  {inline: true}
 ];

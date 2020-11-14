@@ -42,6 +42,7 @@ const resolvers: IResolvers = {
   Comment: {
     createdAt: (parent: Comment) => parent.createdAt.toISOString(),
     author: (parent: Comment) => getUserById(parent.authorId),
+    post: (parent: Comment) => getPostById(parent.postId),
   },
 }
 

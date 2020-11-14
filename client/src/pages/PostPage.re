@@ -1,10 +1,14 @@
 module Comments = {
   module CommentsQuery = CommentQueries.PostCommentsQuery;
   [@react.component]
-  let make = (~postId) => {
+  let make = (~postId, ~focusedCommentId=?) => {
     let result = CommentsQuery.makeVariables(~postId, ())->CommentsQuery.use;
     switch (result) {
-    | {data: Some({post: Some({comments})})} => <CommentList comments />
+    | {data: Some({post: Some({comments})})} =>
+      <CommentList
+        comments={comments->Belt.Array.map(c => (c.id, c))}
+        ?focusedCommentId
+      />
     | _ => React.null
     };
   };
@@ -12,7 +16,7 @@ module Comments = {
 
 module PostQuery = PostQueries.PostDisplayQuery;
 [@react.component]
-let make = (~postId: string) => {
+let make = (~postId, ~focusedCommentId) => {
   let result = PostQuery.makeVariables(~postId, ())->PostQuery.use;
   let (commentFormVisible, setCommentFormVisible) =
     React.useState(() => false);
@@ -34,7 +38,7 @@ let make = (~postId: string) => {
         </Button>
         {commentFormVisible ? <AddCommentForm postId={post.id} /> : React.null}
         <br />
-        <Comments postId={post.id} />
+        <Comments postId={post.id} ?focusedCommentId />
       </>
     | None => "That post does not exist :("->React.string
     }

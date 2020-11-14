@@ -8,8 +8,8 @@ let make = (~post: PostFragments.PostPreviewData.t) => {
       }
     />;
 
-  <div className="box content">
-    <Link to_={Route.Post(post.id)}>
+  <div className="box">
+    <Link to_={Route.Post(post.id, None)}>
       <p className="title is-3"> post.title->React.string </p>
     </Link>
     <span className="subtitle is-5">
@@ -17,6 +17,8 @@ let make = (~post: PostFragments.PostPreviewData.t) => {
       authorName
     </span>
     <Timestamp.Display className="is-italic ml-3" of_={post.createdAt} />
-    <p className="has-text-weight-semibold"> post.abstract->React.string </p>
+    <p className="has-text-weight-semibold mt-1">
+      post.abstract->React.string
+    </p>
   </div>;
 };

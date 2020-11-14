@@ -1,5 +1,6 @@
 open UserFragments;
 open PostFragments;
+open CommentFragments;
 
 [%graphql
   {|
@@ -17,6 +18,9 @@ query UserQuery($userId: ID!) {
   user(id: $userId) {
     posts {
       ...PostPreviewData
+    }
+    comments {
+      ...CommentPreviewData
     }
     ...UserDisplayData
   }
