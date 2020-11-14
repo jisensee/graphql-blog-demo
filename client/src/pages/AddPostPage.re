@@ -3,7 +3,10 @@ module Form = {
   let make = (~userId, ~loading, ~addPost) => {
     let (data, setData) =
       React.useState(() => {PostForm.title: "", content: ""});
-    let onSave = _ => addPost(userId, data.title, data.content);
+    let onSave = event => {
+      event->ReactEvent.Mouse.preventDefault;
+      addPost(userId, data.title, data.content);
+    };
     let buttonClass =
       Cn.(fromList(["button", "is-success", "loading"->on(loading)]));
     let buttonDisabled = data.title === "" || data.content === "";

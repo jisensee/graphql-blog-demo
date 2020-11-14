@@ -11,8 +11,8 @@ type t =
 let toString =
   fun
   | Posts => "/"
-  | Post(postId) => "/post/" ++ postId
   | AddPost => "/post/add"
+  | Post(postId) => "/post/" ++ postId
   | Authors => "/authors"
   | User(userId) => "/user/" ++ userId
   | NotFound => "/404";
