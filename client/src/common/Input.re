@@ -1,5 +1,13 @@
 [@react.component]
-let make = (~className="", ~value, ~onChange, ~valid=true, ~multiLine=false) => {
+let make =
+    (
+      ~className="",
+      ~value,
+      ~onChange,
+      ~placeholder="",
+      ~valid=true,
+      ~multiLine=false,
+    ) => {
   let onValueChange = event => {
     let value: string = event->ReactEvent.Form.currentTarget##value;
     onChange(value);
@@ -15,5 +23,5 @@ let make = (~className="", ~value, ~onChange, ~valid=true, ~multiLine=false) => 
       ])
     );
 
-  <input className=inputClassName value onChange=onValueChange />;
+  <input className=inputClassName value onChange=onValueChange placeholder />;
 };

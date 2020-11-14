@@ -9,11 +9,12 @@ module Form = {
     let contentValid = content !== "";
 
     <form>
-      <FormField label="Add a comment:">
+      <FormField>
         <Input
           value=content
           onChange={value => setContent(_ => value)}
           valid=contentValid
+          placeholder="Say something nice!"
         />
       </FormField>
       <FormField>

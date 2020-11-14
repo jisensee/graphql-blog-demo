@@ -1,3 +1,7 @@
+type style =
+  | Info
+  | Success;
+
 [@react.component]
 let make =
     (
@@ -7,14 +11,18 @@ let make =
       ~loading=false,
       ~enabled=true,
       ~icon=?,
+      ~style=Info,
     ) => {
   let cn =
     Cn.(
       fromList([
         className,
         "button",
-        "is-success",
         "is-loading"->on(loading),
+        switch (style) {
+        | Info => "is-info"
+        | Success => "is-sucess"
+        },
       ])
     );
   let onButtonClick = event => {
