@@ -5,7 +5,7 @@ let make = (~comments: array(CommentFragments.CommentPreviewData.t)) =>
   comments->Array.length === 0
     ? React.null
     : <>
-        <div className="title is-4"> "Comments"->React.string </div>
+        <div className="title is-3"> "Comments"->React.string </div>
         {comments
          ->List.fromArray
          ->List.sort((c1, c2) =>

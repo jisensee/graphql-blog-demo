@@ -23,5 +23,17 @@ let make =
       ])
     );
 
-  <input className=inputClassName value onChange=onValueChange placeholder />;
+  multiLine
+    ? <textarea
+        className=inputClassName
+        value
+        onChange=onValueChange
+        placeholder
+      />
+    : <input
+        className=inputClassName
+        value
+        onChange=onValueChange
+        placeholder
+      />;
 };
