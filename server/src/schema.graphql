@@ -11,6 +11,7 @@ type Query {
 type Mutation {
   addPost(authorId: ID!, title: String!, content: String!): Post!
   addComment(authorId: ID!, postId: ID!, content: String!): Comment!
+  likePost(userId: ID!, postId: ID!): Int
 }
 
 interface Entity {
@@ -25,6 +26,7 @@ type User implements Entity {
   username: String!
   posts: [Post!]!
   comments: [Comment!]!
+  postCount: Int!
 }
 
 type Post implements Entity {
@@ -35,6 +37,8 @@ type Post implements Entity {
   createdAt: String!
   author: User
   comments: [Comment!]!
+  likedBy: [User!]!
+  likes: Int!
 }
 
 type Comment implements Entity {

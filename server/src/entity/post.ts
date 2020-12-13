@@ -5,6 +5,7 @@ interface Post extends Entity {
   content: string
   authorId: id
   createdAt: Date
+  likedBy: id[]
 }
 
 const posts: Post[] = []
@@ -14,7 +15,18 @@ const getPosts = () => posts
 const getPostsByAuthor = (authorId: id) =>
   posts.filter((p) => p.authorId === authorId)
 
-const getPostById = (id: id) => getEntityById(posts, id)
+const getPostById = (id: id): Post | null => getEntityById(posts, id)
+
+const likePost = (postId: id, userId: id) => {
+  const post = getPostById(postId)
+  if (post) {
+    if (!post.likedBy.includes(userId)) {
+      post.likedBy.push(userId)
+    }
+    return post.likedBy.length
+  }
+  return null
+}
 
 const addPost = (authorId: id, title: string, content: string): Post => {
   const newPost: Post = {
@@ -23,6 +35,7 @@ const addPost = (authorId: id, title: string, content: string): Post => {
     content,
     authorId,
     createdAt: new Date(),
+    likedBy: [],
   }
   posts.push(newPost)
   return newPost
@@ -44,4 +57,5 @@ export {
   getPostById,
   addPost,
   getPostAbstract,
+  likePost,
 }

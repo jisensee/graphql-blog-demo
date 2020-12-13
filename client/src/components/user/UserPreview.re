@@ -7,4 +7,5 @@ let make = (~user: UserFragments.UserPreviewData.t) =>
     <p className="is-italic">
       {user.bio->Belt.Option.getWithDefault("")->React.string}
     </p>
+    <p> {("Posts: " ++ string_of_int(user.postCount))->React.string} </p>
   </div>;

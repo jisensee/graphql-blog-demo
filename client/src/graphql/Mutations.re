@@ -10,5 +10,8 @@ mutation AddCommentMutation($authorId: ID!, $postId: ID!, $content: String!) {
     id
   }
 }
+mutation LikePostMutation($postId: ID!, $userId: ID!) {
+  likePost(postId: $postId, userId: $userId)
+}
 |}
 ];

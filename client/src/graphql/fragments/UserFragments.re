@@ -26,6 +26,7 @@ fragment UserPreviewData on User {
   id
   name
   bio
+  postCount
 }
 
 fragment UserDisplayData on User {

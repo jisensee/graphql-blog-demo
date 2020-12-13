@@ -17,6 +17,7 @@ open UserFragments;
     title
     content
     createdAt
+    likes
     author {
       ...PostDisplayAuthorData
     }
