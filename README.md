@@ -51,4 +51,4 @@ If the GraphQL schema on the server changes, you need to run `npm run update-sch
 
 Since the server uses the standard TypeScript-stack, no additional config is needed here.
 
-For the client, install [reason-vscode](https://marketplace.visualstudio.com/items?itemName=jaredly.reason-vscode) for Reason-support and [vscode-reasonml-graphql](https://marketplace.visualstudio.com/items?itemName=GabrielNordeborn.vscode-reasonml-graphql) for GraphQl-support in Reason. Check their documentation for setup information.
+For the client, install [rescript-vscode](https://marketplace.visualstudio.com/items?itemName=chenglou92.rescript-vscode) for Rescript-support and [vscode-reasonml-graphql](https://marketplace.visualstudio.com/items?itemName=GabrielNordeborn.vscode-reasonml-graphql) for GraphQl-support in Rescript. Check their documentation for setup information.
